@@ -1,16 +1,17 @@
-# Sorting Algorithms in Java
+ممتاز! دلوقتي نحدّث README.md بالنتائج الحقيقية. افتح الملف في VS Code، امسح كل حاجة، والصق:
+# Sorting Algorithms + Complexity Analyzer in Java
 
 ![Language](https://img.shields.io/badge/Language-Java%2023-orange)
 ![Tests](https://img.shields.io/badge/Tests-36%20passing-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Implementation of 6 classic sorting algorithms in Java with complexity analysis.
-Verified by 36 automated tests covering random, sorted, reversed, and edge cases.
+Implementation of 6 classic sorting algorithms in Java with a Complexity Analyzer
+that measures real execution time across different input sizes and cases.
 
 ## Algorithms Implemented
 
-| Algorithm | Time (Best) | Time (Avg) | Time (Worst) | Space |
-|-----------|-------------|------------|--------------|-------|
+| Algorithm | Best | Average | Worst | Space |
+|-----------|------|---------|-------|-------|
 | Bubble Sort | O(n) | O(n^2) | O(n^2) | O(1) |
 | Selection Sort | O(n^2) | O(n^2) | O(n^2) | O(1) |
 | Insertion Sort | O(n) | O(n^2) | O(n^2) | O(1) |
@@ -21,28 +22,26 @@ Verified by 36 automated tests covering random, sorted, reversed, and edge cases
 ## Quick Start
 
     git clone https://github.com/0mohamed123/sorting-visualizer.git
-    cd sorting-visualizer
-
-    # Compile and run demo
-    cd src
-    javac -d . algorithms/*.java Main.java
+    cd sorting-visualizer/src
+    javac -d . algorithms/*.java visualizer/SortVisualizer.java Main.java
     java Main
 
-    # Run all tests
+    # Run tests
     cd ../tests
     javac -cp ../src -d . ../src/algorithms/*.java TestSorting.java
     java -cp . TestSorting
 
-## Demo Output
+## Benchmark Results (Random Arrays)
 
-    === Sorting Algorithms Demo ===
+    Algorithm        n=1000      n=5000     n=10000     n=50000
+    Bubble Sort      3094 us     11391 us    84696 us   2754696 us
+    Selection Sort   1368 us      7322 us    17171 us    408191 us
+    Insertion Sort   1654 us      6652 us    13485 us    101590 us
+    Merge Sort        484 us       655 us     1355 us      7829 us
+    Quick Sort        240 us       406 us      681 us      5974 us
+    Heap Sort         621 us       866 us     1444 us      7267 us
 
-    Bubble Sort:    [11, 12, 22, 25, 34, 64, 90]
-    Selection Sort: [11, 12, 22, 25, 34, 64, 90]
-    Insertion Sort: [11, 12, 22, 25, 34, 64, 90]
-    Merge Sort:     [11, 12, 22, 25, 34, 64, 90]
-    Quick Sort:     [11, 12, 22, 25, 34, 64, 90]
-    Heap Sort:      [11, 12, 22, 25, 34, 64, 90]
+    Key insight: Quick Sort is 461x faster than Bubble Sort at n=50000
 
 ## Test Results
 
@@ -56,16 +55,19 @@ Verified by 36 automated tests covering random, sorted, reversed, and edge cases
     - Array with duplicates
     - Empty array
 
-## Key Design Decisions
+## Project Structure
 
-- Each algorithm is a standalone class with sort(), getName(), getTimeComplexity()
-- Bubble Sort optimized with early termination flag
-- Quick Sort uses last element as pivot
-- Merge Sort uses auxiliary arrays for merging
-- Heap Sort builds max-heap then extracts elements
+    sorting-visualizer/
+    ├── src/
+    │   ├── algorithms/        # 6 sorting algorithms
+    │   ├── visualizer/        # Complexity Analyzer
+    │   └── Main.java
+    └── tests/
+        └── TestSorting.java   # 36 automated tests
 
 ## Technologies
 
 - Java 23
 - No external dependencies
-- Lambda expressions for test runner
+- Lambda expressions
+- System.nanoTime() for precise benchmarking
