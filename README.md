@@ -1,4 +1,3 @@
-ممتاز! دلوقتي نحدّث README.md بالنتائج الحقيقية. افتح الملف في VS Code، امسح كل حاجة، والصق:
 # Sorting Algorithms + Complexity Analyzer in Java
 
 ![Language](https://img.shields.io/badge/Language-Java%2023-orange)
